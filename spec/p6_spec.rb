@@ -19,8 +19,25 @@ RSpec.describe P6 do
       it "Terreno empleado" do
         expect(@alimento.terreno).not_to be nil        
       end
-
       
     end
+    context "Comprobación de métodos" do
+      it "Método para obtener nombre de alimento" do
+         expect(@alimento.getNombre).to eq(@alimento.nombre)  
+      end
+
+      it "Método para obtener emisiones de gases efecto invernadero" do
+        expect(@alimento.getKgCO).to eq(@alimento.kgCO)  
+     end
+
+     it "Método para obtener terreno utilizado" do
+      expect(@alimento.getTerreno).to eq(@alimento.terreno)  
+   end
+
+  
+
+    end
+
+
   end
 end

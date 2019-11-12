@@ -20,6 +20,10 @@ module P6
           
        end
     end
+    
+    def getNombre
+      @nombre
+    end
   end
 
 end
