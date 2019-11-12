@@ -38,7 +38,7 @@ RSpec.describe P6 do
 
     context "Métodos que requieren variables" do
       it "Método para obtener el valor energético por kilogramo Carne de vaca" do
-        expect(@alimento.valorEnergetico).to eq(112,3)
+        expect(@alimento.valorEnergetico).to eq(112)
       end
     end
 
