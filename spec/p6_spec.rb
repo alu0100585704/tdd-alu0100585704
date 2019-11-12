@@ -32,10 +32,14 @@ RSpec.describe P6 do
 
      it "Método para obtener terreno utilizado" do
       expect(@alimento.getTerreno).to eq(@alimento.terreno)  
-   end
+    end
 
-  
+    end
 
+    context "Métodos que requieren variables" do
+      it "Método para obtener el valor energético por kilogramo Carne de vaca" do
+        expect(@alimento.valorEnergetico).to eq(112,3)
+      end
     end
 
 
