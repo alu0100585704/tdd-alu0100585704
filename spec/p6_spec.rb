@@ -37,9 +37,37 @@ RSpec.describe P6 do
     end
 
     context "Métodos que requieren variables" do
+      
       it "Método para obtener el valor energético por kilogramo Carne de vaca" do
-        expect(@alimento.valorEnergetico).to eq(112)
+        tipo_de_alimento = P6::Alimentos.new("Carne de vaca")
+        expect(tipo_de_alimento.valorEnergetico).to eq(112)
       end
+
+      it "Método para obtener el valor energético por kilogramo Carne de cordero" do
+        tipo_de_alimento = P6::Alimentos.new("Carne de cordero")
+        expect(tipo_de_alimento.valorEnergetico).to eq(225)
+      end
+
+      it "Método para obtener el valor energético por kilogramo Camarones(piscifactoria)" do
+        tipo_de_alimento = P6::Alimentos.new("Camarones (piscifactoria)")
+        expect(tipo_de_alimento.valorEnergetico).to eq(81)
+      end
+
+      it "Método para obtener el valor energético por kilogramo Chocolate" do
+        tipo_de_alimento = P6::Alimentos.new("Chocolate")
+        expect(tipo_de_alimento.valorEnergetico).to eq(569)
+      end
+    end
+
+    context "Métodos Impacto ambiental" do
+      it "Hombre de 20 - 39  años" do
+          expect(@alimento.impactoAmbientalHombre).to eq([1300,4264])          
+      end
+
+      it "Mujer de 20 - 39  años" do
+        expect(@alimento.impactoAmbientalMujer).to eq([1000,3280])         
+      end
+
     end
 
 
