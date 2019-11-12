@@ -24,6 +24,15 @@ module P6
     def getNombre
       @nombre
     end
+
+    def getKgCO
+      @kgCO
+    end
+
+    def getTerreno
+      @terreno
+    end
+
   end
 
 end
