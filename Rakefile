@@ -4,3 +4,7 @@ require "rspec/core/rake_task"
 RSpec::Core::RakeTask.new(:spec)
 
 task :default => :spec
+
+task :spec do
+  sh "rspec -I. spec/p6_spec.rb"
+end

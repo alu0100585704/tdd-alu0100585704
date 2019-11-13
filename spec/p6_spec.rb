@@ -1,12 +1,11 @@
-require "lib/p6"
 RSpec.describe P6 do
   it "has a version number" do
     expect(P6::VERSION).not_to be nil
   end
 
-  describe P6::Alimentos do
+  describe Alimentos do
     before (:all) do
-        @alimento = P6::Alimentos.new("Carne de vaca")
+        @alimento = Alimentos.new("Carne de vaca")
     end
     context "Comprobacion de variables de instancia" do
       it "Nombre de alimento" do
@@ -39,22 +38,22 @@ RSpec.describe P6 do
     context "Métodos que requieren variables" do
       
       it "Método para obtener el valor energético por kilogramo Carne de vaca" do
-        tipo_de_alimento = P6::Alimentos.new("Carne de vaca")
+        tipo_de_alimento = Alimentos.new("Carne de vaca")
         expect(tipo_de_alimento.valorEnergetico).to eq(112)
       end
 
       it "Método para obtener el valor energético por kilogramo Carne de cordero" do
-        tipo_de_alimento = P6::Alimentos.new("Carne de cordero")
+        tipo_de_alimento = Alimentos.new("Carne de cordero")
         expect(tipo_de_alimento.valorEnergetico).to eq(225)
       end
 
       it "Método para obtener el valor energético por kilogramo Camarones(piscifactoria)" do
-        tipo_de_alimento = P6::Alimentos.new("Camarones (piscifactoria)")
+        tipo_de_alimento = Alimentos.new("Camarones (piscifactoria)")
         expect(tipo_de_alimento.valorEnergetico).to eq(81)
       end
 
       it "Método para obtener el valor energético por kilogramo Chocolate" do
-        tipo_de_alimento = P6::Alimentos.new("Chocolate")
+        tipo_de_alimento = Alimentos.new("Chocolate")
         expect(tipo_de_alimento.valorEnergetico).to eq(569)
       end
     end
@@ -70,6 +69,6 @@ RSpec.describe P6 do
 
     end
 
-
   end
+
 end
