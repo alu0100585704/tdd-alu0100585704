@@ -1,64 +1,51 @@
   class Alimentos
-     attr_accessor :nombre, :kgCO, :terreno
+
+    include Comparable
+
+     attr_reader :nombre, :kgCO_diario, :terreno_anual, :gramos_totales,:proteinas_gramos,:hidratos_gramos,:lipidos_gramos
+     
      
 
-     #tabla de alimentos composición por kg e impacto ambiental
-     #Nombre - proteinas - cabo hidratos - lipidos- GEI - Terreno m2 año
-
-     @@tabla = {'Carne de vaca'             => [21.1,0.0,3.1,50.0,164.0],
-                'Carne de cordero'          => [18.0,0.0,17.0,20.0,185.0],
-                'Camarones (piscifactoria)' => [17.6,1.5,0.6,18.0,2.0],
-                'Chocolate'                 =>[5.3,47.0,40.0,2.3,3.4],
-                'Salmon (piscifactoria)'    => [19.9,0.0,13.6,6.0,3.7],
-                'Cerdo'                     => [21.5,0.0,6.3,7.6,11.0],
-                'Pollo'                     => [20.6,0.0,5.6,5.7,7.1],
-                'Queso'                     => [25.0,1.3,33.0,11.0,41.0],
-                'Cerveza'                   => [0.5,3.6,0.0,0.24,0.22],
-                'Leche de vaca'             => [3.3,4.8,3.2,3.2,8.9],
-                'Huevos'                    => [13.0,1.1,11.0,4.2,5.7],
-                'Cafe'                      => [0.1,0.0,0.0,0.4,0.3],
-                'Tofu'                      => [8.0,1.9,4.8,2.0,2.2],
-                'Lentejas'                  => [23.5,52.0,1.4,0.4,3.4],
-                'Nuez'                      => [20.0,21.0,54.0,0.3,7.9]
-              }
-
-     #kilocalorías por gramo. 4 para proteínas, 4 para hidratos, 9 para lípidos.
-     @@kilocalorias_por_gramo = [4.0,4.0,9.0]
-
-    def  initialize(nombre)
-      puts 
-       if @@tabla[nombre]  !=  nil
-          @nombre = nombre
-          @kgCO = @@tabla[nombre][3]
-          @terreno = @@tabla[nombre][4]
+#nobre del alimento, array con valores nutricionales y medioambiantales y gramos
+#de alimento, por defecto 100g.
+    def  initialize(nombre,valor,g=100)
           
-       end
-    end
-    
-    def getNombre
-      @nombre
-    end
+          @nombre = nombre
+         
+            #si no defino los gramos son 100g, puesto que son en los que
+            #se basa la tabla para la información nutricional
+            @gramos_totales=g
+                          
+            @proteinas_gramos=valor[0]*@gramos_totales/100.00
+            @hidratos_gramos=valor[1]*@gramos_totales/100.00
+            @lipidos_gramos=valor[2]*@gramos_totales/100.00
+                 
+          #obtengo los gases C02 emitidos diarios en base a la cantidad de alimento en gramos.
+          #Recuerda que el valor KGCO2EQ de la tabla es por kg / diario , por eso se divide entre 1000
+          @kgCO_diario = valor[3]*@gramos_totales /1000.00
 
-    def getKgCO
-      @kgCO
-    end
-
-    def getTerreno
-      @terreno
+          #impacto ambiental de terreno  m2 al año en base a los gramos.
+          #recuerda que el valor de la tabla es para 1 kg, por eso se divide entre 1000
+          @terreno_anual = valor[4]*@gramos_totales/1000.00
     end
 
     #devuelve el valor energético en valores entero. 
     def valorEnergetico
-      ((@@tabla[nombre][0] * @@kilocalorias_por_gramo[0]) + (@@tabla[nombre][1] * @@kilocalorias_por_gramo[1]) +(@@tabla[nombre][2] * @@kilocalorias_por_gramo[2])).to_int
+      #kilocalorías por gramo. 4 para proteínas, 4 para hidratos, 9 para lípidos.
+      (@proteinas_gramos * 4) + (@hidratos_gramos * 4) + (@lipidos_gramos * 9).to_int
+    end
+            
+    #mi comparativa de alimentos se hará en base a su valor energético, pero hay que tener en cuenta
+    #que el valor energético de dos productos varía dependiendo de la cantidad de gramos del alimento.
+    # o sea, para 100 gramos de carne de vaca sus valores energéticos serán lo mismo pero si comparamos
+    # 100 g de carne de vaca con 200 gramos de carne de vaca, dará diferente obviamente.
+    def <=> (other)
+        return nil unless other.instance_of? Alimentos
+        valorEnergetico <=> other.valorEnergetico
     end
 
-    def impactoAmbientalHombre
-      valor = 3000/valorEnergetico()
-      [valor * kgCO, valor * terreno]
+    def to_s
+        "El alimento: #{@nombre}, tiene un valor energetico de #{valorEnergetico} para la cantidad de  #{@gramos_totales} gramos"        
     end
-
-    def impactoAmbientalMujer
-      valor = 2300/valorEnergetico()
-      [valor * kgCO, valor * terreno]
-    end
-  end
+  
+end
