@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "p6/version"
+require "tdd-alu0100585704/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "p6"
-  spec.version       = P6::VERSION
+  spec.name          = "tdd-alu0100585704"
+  spec.version       = TDDALU0100585704::VERSION
   spec.authors       = ["Juan Siverio"]
   spec.email         = ["alu0100585704@ull.edu.es"]
 

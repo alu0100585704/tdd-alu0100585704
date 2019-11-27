@@ -1,3 +1,3 @@
-module P6
+module TDDALU0100585704
   VERSION = "0.1.0"
 end

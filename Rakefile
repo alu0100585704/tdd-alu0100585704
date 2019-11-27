@@ -6,5 +6,5 @@ RSpec::Core::RakeTask.new(:spec)
 task :default => :spec
 
 task :spec do
-  sh "rspec -I. spec/p6_spec.rb"
+  sh "rspec -I. spec/tdd-alu0100585704_spec.rb"
 end

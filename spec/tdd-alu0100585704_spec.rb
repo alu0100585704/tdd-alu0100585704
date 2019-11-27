@@ -1,6 +1,6 @@
-RSpec.describe P6 do
+RSpec.describe TDDALU0100585704 do
   it "has a version number" do
-    expect(P6::VERSION).not_to be nil
+    expect(TDDALU0100585704::VERSION).not_to be nil
   end
   describe Alimentos do
     before (:all) do
