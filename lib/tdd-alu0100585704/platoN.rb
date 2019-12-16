@@ -10,14 +10,14 @@ class PlatoN
         @gramos_total_plato=0
         @proteinas_gramos_plato=0
         @hidratos_gramos_plato=0
-        @lipidos_gramos_plato=0
+        @lipidos_gramos_plato=0        
 
         #recorreo todos los ingredientes y voy extrayendo sus datos nutricionales
         @ingredientes.each{|x|            
             @gramos_total_plato=@gramos_total_plato + x.gramos_totales 
             @proteinas_gramos_plato=@proteinas_gramos_plato + x.proteinas_gramos
             @hidratos_gramos_plato=@hidratos_gramos_plato + x.hidratos_gramos
-            @lipidos_gramos_plato=@lipidos_gramos_plato + x.lipidos_gramos
+            @lipidos_gramos_plato=@lipidos_gramos_plato + x.lipidos_gramos            
 
         }
 
@@ -34,6 +34,7 @@ class PlatoN
        (@proteinas_gramos_plato * 4) + (@hidratos_gramos_plato * 4) + (@lipidos_gramos_plato * 9).to_int
     end
         
+
     #metos para devolver los porcentajes de los diferentes nutrientes en proporcial al total del plato
 
     def porcentajeProteinas
