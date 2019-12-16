@@ -1,8 +1,7 @@
-
-Practica 8: Lenguajes y Paradigmas de la Programación
+Practica 9: Lenguajes y Paradigmas de la Programación
 Autor: Juan Siverio Rojas
-También se ha creado el código necesario para la práctica 7, puesto que no la había hecho. Osea, la clase Listas con su insertar y extraer con cabeza y cola.
 
-Seguimos con metodología TDD rspec y se trata de pruebas sobre platos, que es una clase con listas de alimentos. 
-También se crea otra clase que hereda  para agregar información medioambiental.
+Seguimos con metodología TDD rspec y programación declarativa funcional.
+las comparaciones de platos ahora son por su huella nutricional y  no por valor energético.
+
 
